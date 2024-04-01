@@ -99,9 +99,31 @@ public class Automovil {
         return km / (capacidadTanque * porcentajeCombustible);
     }
 
-    //Metodo equals, que se puede heredar del objeto Object de Java
+    //Este código Java es la implementación del método equals en una clase llamada Automovil.
+    //El método equals se utiliza para comparar dos objetos y determinar si son iguales según algún criterio específico.
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        //Si el objeto es de un tipo diferente de Automovil entonces retorne falso
+        if(!(obj instanceof Automovil)){
+            return false;
+        }
+        //Siempre debemos comparar un objeto del mismo tipo, por eso acá se hace el cast, porque "obj" es de tipo
+        //"Object" y yo lo necesito de tipo Automovil
+        Automovil objAutomovil = (Automovil) obj;
+        //Los String siempre los comparamos con equals
+        return (this.fabricante != null && this.modelo != null
+                && this.fabricante.equals(objAutomovil.getFabricante())
+                && this.modelo.equals(objAutomovil.getModelo()));
+    }
+
+    @Override
+    public String toString() {
+        return "Automovil{" +
+                "fabricante='" + fabricante + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", color='" + color + '\'' +
+                ", cilindraje=" + cilindraje +
+                ", capacidadTanque=" + capacidadTanque +
+                '}';
     }
 }
